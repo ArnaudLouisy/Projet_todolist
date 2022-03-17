@@ -1,10 +1,10 @@
-import appli.Logiciel;
+
+import appli.TodoList;
 
 import java.util.Scanner;
 public class Main {
     public static void main(String[] var0) {
-        Logiciel var1 = new Logiciel();
-        var1.lancerLogiciel();
+        TodoList todo = new TodoList(); 
     }
 
     }

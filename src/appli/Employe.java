@@ -23,7 +23,7 @@ public class Employe {
     public void connexion() throws SQLException, SQLException {
 
         Connection cnx = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/user?serverTimezone=UTC",
+                "jdbc:mysql://localhost:3306/todo_list?serverTimezone=UTC",
                 "root",
                 ""
         );
@@ -48,7 +48,7 @@ public class Employe {
     public void inscrire() throws SQLException {
 
         Connection cnx = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/user?serverTimezone=UTC",
+                "jdbc:mysql://localhost:3306/todo_list?serverTimezone=UTC",
                 "root",
                 ""
         );
@@ -78,7 +78,7 @@ public class Employe {
 
     public void modifier() throws SQLException {
         Connection cnx = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/user?serverTimezone=UTC",
+                "jdbc:mysql://localhost:3306/todo_list?serverTimezone=UTC",
                 "root",
                 ""
         );
@@ -97,7 +97,7 @@ public class Employe {
 
     public void suprimer() throws SQLException {
         Connection cnx = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/user?serverTimezone=UTC",
+                "jdbc:mysql://localhost:3306/todo_list?serverTimezone=UTC",
                 "root",
                 ""
         );

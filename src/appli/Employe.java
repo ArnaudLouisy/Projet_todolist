@@ -28,7 +28,7 @@ public class Employe {
                 ""
         );
 
-        PreparedStatement maRequete = cnx.prepareStatement("Select * from user where username=? and mot_de_passe=? ");
+        PreparedStatement maRequete = cnx.prepareStatement("Select * from employe where username=? and mot_de_passe=? ");
         maRequete.setString(1,username);
         maRequete.setString(2,mot_de_passe);
 
@@ -45,8 +45,6 @@ public class Employe {
         }
     }
 
-
-
     public void inscrire() throws SQLException {
 
         Connection cnx = DriverManager.getConnection(
@@ -55,7 +53,7 @@ public class Employe {
                 ""
         );
 
-        PreparedStatement maRequeteVerifie = cnx.prepareStatement("Select * from user where username=? and mot_de_passe=? ");
+        PreparedStatement maRequeteVerifie = cnx.prepareStatement("Select * from employe where username=? and mot_de_passe=? ");
         maRequeteVerifie.setString(1,username);
         maRequeteVerifie.setString(2,mot_de_passe);
 
@@ -66,7 +64,7 @@ public class Employe {
         }
 
         else {
-            PreparedStatement maRequete = cnx.prepareStatement("Insert into user(nom,prenom,username,service,fonction,mot_de_passe) VALUES (?,?,?,?,?,?)");
+            PreparedStatement maRequete = cnx.prepareStatement("Insert into employe (nom,prenom,username,service,fonction,mot_de_passe) VALUES (?,?,?,?,?,?)");
             maRequete.setString(1,this.nom);
             maRequete.setString(2,this.prenom);
             maRequete.setString(3,this.username);
@@ -74,8 +72,41 @@ public class Employe {
             maRequete.setString(5,this.fonction);
             maRequete.setString(6,this.mot_de_passe);
 
-            ResultSet mesResultat = maRequete.executeQuery();
+            maRequete.executeUpdate();
         }
+    }
+
+    public void modifier() throws SQLException {
+        Connection cnx = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/user?serverTimezone=UTC",
+                "root",
+                ""
+        );
+
+        PreparedStatement maRequete = cnx.prepareStatement("update employe set nom = ?,prenom = ?,username = ?,service = ?,fonction = ?,mot_de_passe = ?");
+
+        maRequete.setString(1,this.nom);
+        maRequete.setString(2,this.prenom);
+        maRequete.setString(3,this.username);
+        maRequete.setString(4,this.service);
+        maRequete.setString(5,this.fonction);
+        maRequete.setString(6,this.mot_de_passe);
+
+        maRequete.executeUpdate();
+    }
+
+    public void suprimer() throws SQLException {
+        Connection cnx = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/user?serverTimezone=UTC",
+                "root",
+                ""
+        );
+
+        PreparedStatement maRequete = cnx.prepareStatement("delete from employe where nom=? and prenom=?");
+        maRequete.setString(1,this.nom);
+        maRequete.setString(2,this.prenom);
+
+        maRequete.executeUpdate();
     }
 }
 
